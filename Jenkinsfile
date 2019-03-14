@@ -18,7 +18,7 @@ node {
     }
     stage('deploy') {
         withAWS(region: 'us-west-2', credentials: 'treebeard') {
-        def outputs = cfnUpdate(stack:'JenkinsPipelineTest', file:'vpc.yaml', params:['VPCName=JenkinsPipelineTest'], timeoutInMinutes:10, tags:['TagName=JenkinsPipelineTest'], pollInterval:1000)
+        def outputs = cfnUpdate(stack:'JenkinsPipelineTest', file:'templates/vpc.yaml', params:['VPCName=JenkinsPipelineTest'], timeoutInMinutes:10, tags:['TagName=JenkinsPipelineTest'], pollInterval:1000)
         echo "${outputs}"
         }
     }
